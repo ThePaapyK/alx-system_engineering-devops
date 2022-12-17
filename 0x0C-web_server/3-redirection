@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+#Configures Nginx server so that /redirect_me is redirecting to another page
+
+#install nginx
+sudo apt-get -y update
+sudo apt-get -y install nginx
+
+# start nginx service
+sudo service start
+
+# allow nginx through firewall
+sudo ufw allow 'Nginx HTTP'
+
+# Give the user ownership to website files for easy editting
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www
+
+# /redirect_me should redirect to my github profile
+sudo sed -i '/listen [::]:80 default_server;/a rewrite ^/redirect_me https://www.github.com/ThePaapyK permanent;' /etc/nginx/sites-available/default
+
+#restart nginx service
+sudo service nginx restart
