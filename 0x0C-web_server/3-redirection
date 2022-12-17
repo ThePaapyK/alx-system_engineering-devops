@@ -15,8 +15,11 @@ sudo ufw allow 'Nginx HTTP'
 sudo chown -R "$USER":"$USER" /var/www/html
 sudo chmod -R 755 /var/www
 
+#Create new index
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+
 # /redirect_me should redirect to my github profile
-sudo sed -i '/listen 80 default_server;/a \        rewrite ^/redirect_me https://www.github.com/ThePaapyK permanent;' /etc/nginx/sites-available/default
+sudo sed -i '/listen 80 default_server;/a\        rewrite ^/redirect_me https://www.github.com/ThePaapyK permanent;' /etc/nginx/sites-available/default
 
 #restart nginx service
 sudo service nginx restart
