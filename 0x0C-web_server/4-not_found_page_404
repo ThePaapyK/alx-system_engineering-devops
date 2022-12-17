@@ -23,7 +23,7 @@ sudo sed -i '/listen 80 default_server;/a rewrite ^/redirect_me https://www.gith
 
 # creates error 404 page
 echo "Ceci n'est pas une page" >> /var/www/html/404_page.html
-sudo sed -i '25i\ \         error_page 404 /404_page.html;' /etc/nginx/sites-available/default
+sudo sed -i '25i \        error_page 404 /404_page.html;' /etc/nginx/sites-available/default
 
 #restart nginx service
 sudo service nginx restart
