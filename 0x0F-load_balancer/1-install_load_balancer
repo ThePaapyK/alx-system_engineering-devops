@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install the load balanecer
+# Install the load balancer
 
 sudo apt-get -y update
 sudo apt-get -y install haproxy
@@ -12,8 +12,8 @@ frontend ThePaapyK_front
 	mode http
 	default_backend ThePaapyK_back
 backend ThePaapyK_back
-    balance roundrobin
-    server 3158-web-01 3.94.185.28 check
-    server 3158-web-02 35.153.17.98 check
+	balance roundrobin
+	server 3158-web-01 3.94.185.28 check
+	server 3158-web-02 35.153.17.98 check
 CONFIG
-sudo service haproxy restart
+sudo service haproxy start
