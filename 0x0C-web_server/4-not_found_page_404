@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+#Configures Nginx server to have a custom 404 page that contains the string Ceci n'est pas une page.
+
+#install nginx
+sudo apt-get -y update
+sudo apt-get -y install nginx
+
+# start nginx service
+sudo service start
+
+# allow nginx through firewall
+sudo ufw allow 'Nginx HTTP'
+
+# Give the user ownership to website files for easy editting
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www
+
+# Creates a new index page
+echo -e "Hello World!" > /var/www/html/index.nginx-debian.html
+
+# /redirect_me should redirect to my github profile
+sudo sed -i '/listen 80 default_server;/a rewrite ^/redirect_me https://www.github.com/ThePaapyK permanent;' /etc/nginx/sites-available/default
+
+# creates error 404 page
+echo "Ceci n'est pas une page" > /var/www/html/404_page.html
+sudo sed -i '25i\        error_page 404 /404_page.html;' /etc/nginx/sites-available/default
+
+#restart nginx service
+sudo service nginx restart
