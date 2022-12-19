@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 # Install the load balanecer
 
-sudo apt-get -y install --no-install-recommends software-properties-common
-sudo  add-apt-repository ppa:vbernat/haproxy-2.6
-sudo apt-get -y install haproxy=2.6.\*
+sudo apt-get -y update
+sudo apt-get -y install haproxy
 
 echo 'ENABLED=1' >> /etc/default/haproxy
 sudo cp /etc/haproxy/haproxy.cfg haproxy.cfg.org
