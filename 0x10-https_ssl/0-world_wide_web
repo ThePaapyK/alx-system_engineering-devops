@@ -1,6 +1,18 @@
 #!/usr/bin/env bash
 #displays informaion about subdomains on specific domains
-Information="$(dig "$2.$1" | grep -A1 'ANSWER SECTION:' | awk 'NR==2')"
-IP=$(echo "$Information" | awk '{print $5}')
-TYPE=$(echo "$Information" | awk '{print $4}')
-echo "The subdomain ${2} is a ${TYPE} record and points to ${IP}"
+subdomains=( "www" "web-01" "web-02" "lb-01" )
+if [ -z "$2" ]
+then
+	for one in "${subdomains[@]}"
+	do
+		Information="$(dig "$one.$1" | grep -A1 'ANSWER SECTION:' | awk 'NR==2')"
+		IP=$(echo "$Information" | awk '{print $5}')
+		TYPE=$(echo "$Information" | awk '{print $4}')
+		echo "The subdomain ${one} is a ${TYPE} record and points to ${IP}"
+	done
+else
+	Information="$(dig "$2.$1" | grep -A1 'ANSWER SECTION:' | awk 'NR==2')"
+	IP=$(echo "$Information" | awk '{print $5}')
+	TYPE=$(echo "$Information" | awk '{print $4}')
+	echo "The subdomain ${2} is a ${TYPE} record and points to ${IP}"
+fi
