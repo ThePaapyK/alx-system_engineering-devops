@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #displays informaion about subdomains on specific domains
-subdomains=( "www" "web-01" "web-02" "lb-01" )
+subdomains=( "www" "lb-01" "web-01" "web-02" )
 if [ -z "$2" ]
 then
 	for one in "${subdomains[@]}"
