@@ -2,5 +2,6 @@
 #configure nginx server to listen for port 80
 #rivers of
 #living water
+sudo service nginx start
 sudo sed -i "s/8080/80/g" /etc/nginx/sites-enabled/default
 sudo service nginx restart
