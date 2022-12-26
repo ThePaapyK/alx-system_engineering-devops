@@ -4,3 +4,4 @@
 #living water
 sudo sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
 sudo service nginx restart
+curl -sI 0:80
