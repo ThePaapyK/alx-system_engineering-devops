@@ -14,7 +14,7 @@ if __name__ == "__main__":
     c = r.json()
     d = r2.json()
     with open(argv[1] + '.csv', 'w', newline='') as file:
-         written = csv.writer(file, quoting=csv.QUOTE_ALL)
-         for item in c:
-             written.writerow([item['userId'], d[0]['username'],
-                              item['completed'], item['title']])
+        written = csv.writer(file, quoting=csv.QUOTE_ALL)
+        for item in c:
+            written.writerow([item['userId'], d[0]['username'],
+                             item['completed'], item['title']])
