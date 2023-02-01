@@ -34,6 +34,8 @@ def count_words(subreddit, word_list, _next=None, count={}):
                 string = post['data']['title']
                 string_split = string.lower().split(' ')
                 count[word] += string_split.count(word.lower())
+                counts = sorted(count.items(), key=lambda x:x[1], reverse=True)
+                count = dict(counts)
         return count_words(subreddit, word_list, _next, count)
     else:
         return
