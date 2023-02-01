@@ -10,7 +10,9 @@ import requests
 def recurse(subreddit, hot_list=[], _next=None):
     """returns titles of all hot articles of a subreddit
     Args:
-    subreddit (string): name of given subreddit"""
+    subreddit (string): name of given subreddit
+    hot_list (list): titles of hot posts
+    _next: after parameter of api lisiting"""
     url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
     r = requests.get(url, headers={"User-Agent": "globann"},
                      allow_redirects=False,
