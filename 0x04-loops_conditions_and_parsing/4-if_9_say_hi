@@ -3,10 +3,13 @@
 # loop & conditional
 
 n="Best School"
-for i in {1..10}; do
-if [ "$i" = "10" ]
+i="0"
+while [ "$i" -lt "10" ];
+do
+if [ "$i" = "9" ]
 then
 echo "Hi"
 fi
 echo "$n"
+(( i++ ))
 done
