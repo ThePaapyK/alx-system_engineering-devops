@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2034,SC2045,SC2006,SC2001
+#ls
+
+for i in `ls`;
+do
+echo "$i" | sed 's/^.-//g'
+done
