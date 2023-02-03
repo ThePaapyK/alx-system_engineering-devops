@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2034
+# loop & conditional
+
+n="Best School"
+for i in {1..10}; do
+if [ "$i" = "10" ]
+then
+echo "Hi"
+fi
+echo "$n"
+done
